@@ -1,0 +1,23 @@
+Test Case 1
+Input:
+- Lunch
+- Food
+- 12.50
+Expected Result:
+- Expense appears in the list.
+- Total reflects the amount entered.
+
+Test Case 2
+Input:
+- Gas
+- Transportation
+- 40.00
+Expected Result:
+- Both expenses display correctly.
+- Total updates correctly.
+
+Test Case 3
+Input:
+- Invalid amount such as "abc"
+Expected Result:
+- Program displays an error message and asks again.
