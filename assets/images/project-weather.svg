@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Weather dashboard screenshot mockup">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6dbbe7"/>
+      <stop offset="100%" stop-color="#d7eef7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="620" fill="url(#sky)"/>
+  <rect x="55" y="45" width="890" height="530" rx="16" fill="#ffffff" stroke="#bfd9e8"/>
+  <rect x="55" y="45" width="890" height="88" rx="16" fill="#1f6f9f"/>
+  <text x="95" y="99" fill="#ffffff" font-size="34" font-family="Segoe UI, Arial, sans-serif">Weather Dashboard</text>
+  <rect x="95" y="165" width="280" height="370" rx="12" fill="#f3f9fc" stroke="#d0e5ef"/>
+  <text x="118" y="206" fill="#2f4b5e" font-size="24" font-family="Segoe UI, Arial, sans-serif">Search City</text>
+  <rect x="118" y="224" width="230" height="42" rx="8" fill="#ffffff" stroke="#bdd6e6"/>
+  <rect x="118" y="284" width="230" height="46" rx="8" fill="#1f6f9f"/>
+  <text x="188" y="315" fill="#ffffff" font-size="20" font-family="Segoe UI, Arial, sans-serif">Search</text>
+  <rect x="410" y="165" width="495" height="170" rx="12" fill="#f8fcff" stroke="#d0e5ef"/>
+  <text x="435" y="208" fill="#2f4b5e" font-size="28" font-family="Segoe UI, Arial, sans-serif">Nashville, TN</text>
+  <text x="435" y="250" fill="#2f4b5e" font-size="22" font-family="Segoe UI, Arial, sans-serif">72°F | Clear Sky</text>
+  <rect x="410" y="365" width="495" height="170" rx="12" fill="#f8fcff" stroke="#d0e5ef"/>
+  <rect x="435" y="394" width="84" height="112" rx="8" fill="#ffffff" stroke="#bfd9e8"/>
+  <rect x="533" y="394" width="84" height="112" rx="8" fill="#ffffff" stroke="#bfd9e8"/>
+  <rect x="631" y="394" width="84" height="112" rx="8" fill="#ffffff" stroke="#bfd9e8"/>
+  <rect x="729" y="394" width="84" height="112" rx="8" fill="#ffffff" stroke="#bfd9e8"/>
+</svg>

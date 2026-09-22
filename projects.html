@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker | ProjectOps Hub</title>
+    <meta name="description" content="Interactive tracker for client-assessed tools, SLA compliance, KPI attainment, and internal risk.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand" href="index.html">ProjectOps Hub</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+            <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="resume.html">Resume</a>
+                <a class="active" href="projects.html" aria-current="page">Projects</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="section">
+        <div class="container flow">
+            <h1>Project Manager Tracking Workspace</h1>
+            <p>
+                Use this workspace to register client-assessed tools, verify SLA and KPI performance,
+                and track internal delivery risk with a single operational record.
+            </p>
+
+            <article class="project-card">
+                <img src="assets/images/project-expense.svg" alt="Screenshot preview of SLA monitoring module">
+                <div>
+                    <h2>SLA Monitor Engine</h2>
+                    <p><strong>Description:</strong> Tracks contractual SLA targets against actual service performance for each client-tool combination.</p>
+                    <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, client-side rules engine</p>
+                    <p><strong>GitHub Link:</strong> <a href="https://github.com/Hardenti/Project1.git" target="_blank" rel="noopener noreferrer">View Repository</a></p>
+                    <p><strong>Lessons Learned:</strong> SLA compliance is more actionable when thresholds and risk labels are visible in one table.</p>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <img src="assets/images/project-weather.svg" alt="Screenshot preview of KPI attainment module">
+                <div>
+                    <h2>KPI Attainment Analyzer</h2>
+                    <p><strong>Description:</strong> Measures KPI target achievement and highlights accounts that need immediate intervention.</p>
+                    <p><strong>Technologies Used:</strong> JavaScript calculations, status rendering, responsive data views</p>
+                    <p><strong>GitHub Link:</strong> <a href="https://github.com/Hardenti/Project1.git" target="_blank" rel="noopener noreferrer">View Repository</a></p>
+                    <p><strong>Lessons Learned:</strong> Managers need both percentages and simple met/not met status to drive decisions quickly.</p>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <img src="assets/images/project-reading.svg" alt="Screenshot preview of internal delivery tracker module">
+                <div>
+                    <h2>Internal Delivery Pulse</h2>
+                    <p><strong>Description:</strong> Converts SLA, KPI, and assessment inputs into low/medium/high risk labels for internal tracking.</p>
+                    <p><strong>Technologies Used:</strong> Local storage persistence, dynamic table rendering, risk scoring logic</p>
+                    <p><strong>GitHub Link:</strong> <a href="https://github.com/Hardenti/Project1.git" target="_blank" rel="noopener noreferrer">View Repository</a></p>
+                    <p><strong>Lessons Learned:</strong> Persistent records support weekly governance reviews and historical trend conversations.</p>
+                </div>
+            </article>
+
+            <section class="tracker-layout" aria-labelledby="tracker-heading">
+                <div class="card">
+                    <h2 id="tracker-heading">Client Tool Assessment Tracker</h2>
+                    <p>Add a record to evaluate SLA/KPI health and monitor internal risk.</p>
+                    <form id="tracker-form" class="form-grid">
+                        <label>
+                            Client Name
+                            <input type="text" name="clientName" required>
+                        </label>
+                        <label>
+                            Tool Name
+                            <input type="text" name="toolName" required>
+                        </label>
+                        <label>
+                            Account Owner
+                            <input type="text" name="ownerName" required>
+                        </label>
+                        <label>
+                            Assessed Score (1-5)
+                            <input type="number" name="assessedScore" min="1" max="5" step="0.1" required>
+                        </label>
+                        <label>
+                            SLA Target (%)
+                            <input type="number" name="slaTarget" min="0" max="100" step="0.1" required>
+                        </label>
+                        <label>
+                            SLA Actual (%)
+                            <input type="number" name="slaActual" min="0" max="100" step="0.1" required>
+                        </label>
+                        <label>
+                            KPI Target (%)
+                            <input type="number" name="kpiTarget" min="0" max="100" step="0.1" required>
+                        </label>
+                        <label>
+                            KPI Actual (%)
+                            <input type="number" name="kpiActual" min="0" max="100" step="0.1" required>
+                        </label>
+                        <label>
+                            Review Date
+                            <input type="date" name="reviewDate" required>
+                        </label>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Add Record</button>
+                            <button type="button" class="btn btn-secondary" id="export-csv">Export CSV</button>
+                            <button type="button" class="btn btn-secondary" id="import-csv">Import CSV</button>
+                            <button type="button" class="btn btn-secondary" id="clear-records">Clear All</button>
+                            <input type="file" id="csv-file" accept=".csv,text/csv" hidden>
+                        </div>
+                        <p id="csv-message" class="csv-message" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Internal Tracking Board</h2>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Tool</th>
+                                    <th>Owner</th>
+                                    <th>Assessed</th>
+                                    <th>SLA</th>
+                                    <th>KPI</th>
+                                    <th>Risk</th>
+                                    <th>Review</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tracker-body"></tbody>
+                        </table>
+                    </div>
+                    <p id="tracker-empty" class="empty-message">No records added yet. Add your first client entry above.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 ProjectOps Hub. Built with HTML, CSS, and JavaScript.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

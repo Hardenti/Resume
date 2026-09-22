@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-label="Reading list manager screenshot mockup">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f0e6"/>
+      <stop offset="100%" stop-color="#efe3d2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="620" fill="#efe6d8"/>
+  <rect x="50" y="40" width="900" height="540" rx="16" fill="#fffdf9" stroke="#d8c9b4"/>
+  <rect x="50" y="40" width="900" height="80" rx="16" fill="#b26a34"/>
+  <text x="90" y="91" fill="#ffffff" font-size="34" font-family="Segoe UI, Arial, sans-serif">Reading List Manager</text>
+  <rect x="88" y="154" width="340" height="388" rx="12" fill="url(#paper)" stroke="#d9c8b3"/>
+  <text x="112" y="195" fill="#5a3c25" font-size="24" font-family="Segoe UI, Arial, sans-serif">Add Book</text>
+  <rect x="112" y="218" width="290" height="40" rx="8" fill="#fffefc" stroke="#d6c4ad"/>
+  <rect x="112" y="272" width="290" height="40" rx="8" fill="#fffefc" stroke="#d6c4ad"/>
+  <rect x="112" y="326" width="290" height="40" rx="8" fill="#fffefc" stroke="#d6c4ad"/>
+  <rect x="112" y="386" width="160" height="44" rx="8" fill="#b26a34"/>
+  <text x="145" y="415" fill="#ffffff" font-size="20" font-family="Segoe UI, Arial, sans-serif">Add Item</text>
+  <rect x="458" y="154" width="452" height="388" rx="12" fill="#fffaf4" stroke="#d9c8b3"/>
+  <text x="485" y="195" fill="#5a3c25" font-size="24" font-family="Segoe UI, Arial, sans-serif">My List</text>
+  <rect x="485" y="220" width="398" height="60" rx="10" fill="#ffffff" stroke="#e0d2c0"/>
+  <rect x="485" y="294" width="398" height="60" rx="10" fill="#ffffff" stroke="#e0d2c0"/>
+  <rect x="485" y="368" width="398" height="60" rx="10" fill="#ffffff" stroke="#e0d2c0"/>
+  <rect x="485" y="442" width="398" height="60" rx="10" fill="#ffffff" stroke="#e0d2c0"/>
+</svg>
