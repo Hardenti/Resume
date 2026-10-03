@@ -1,23 +1,66 @@
-Test Case 1
-Input:
-- Lunch
-- Food
-- 12.50
-Expected Result:
-- Expense appears in the list.
-- Total reflects the amount entered.
+Test Case 1 - Medium project with no discount
+Input Values:
+- Client Name: Harmony Holdings
+- Labor Hours: 12
+- Material Cost: 350
+- Project Type: Medium
+- Discount: [blank]
 
-Test Case 2
-Input:
-- Gas
-- Transportation
-- 40.00
-Expected Result:
-- Both expenses display correctly.
-- Total updates correctly.
+Expected Results:
+- Labor Cost = 12 x 75.00 = 900.00
+- Multiplier = 1.15
+- Subtotal = (900.00 + 350.00) x 1.15 = 1,437.50
+- Tax = 1,437.50 x 0.07 = 100.63
+- Total = 1,538.13
+- Estimated Days = Ceiling(12 / 8) = 2
 
-Test Case 3
-Input:
-- Invalid amount such as "abc"
-Expected Result:
-- Program displays an error message and asks again.
+Actual Results:
+- Program displayed Subtotal 1,437.50, Tax 100.63, Total 1,538.13
+- Program displayed Estimated Days as 2
+
+--------------------------------------------------
+
+Test Case 2 - Large project with discount
+Input Values:
+- Client Name: Orion Labs
+- Labor Hours: 20
+- Material Cost: 500
+- Project Type: Large
+- Discount: 10
+
+Expected Results:
+- Labor Cost = 20 x 75.00 = 1,500.00
+- Base Subtotal = (1,500.00 + 500.00) x 1.30 = 2,600.00
+- Discount = 10% of 2,600.00 = 260.00
+- Subtotal after discount = 2,340.00
+- Tax = 2,340.00 x 0.07 = 163.80
+- Total = 2,503.80
+- Estimated Days = Ceiling(20 / 8) = 3
+
+Actual Results:
+- Program displayed discount line and subtotal after discount correctly
+- Program displayed Tax 163.80 and Total 2,503.80
+- Program displayed Estimated Days as 3
+
+--------------------------------------------------
+
+Test Case 3 - Small project with zero material cost
+Input Values:
+- Client Name: Bright Start
+- Labor Hours: 7.5
+- Material Cost: 0
+- Project Type: Small
+- Discount: [blank]
+
+Expected Results:
+- Labor Cost = 7.5 x 75.00 = 562.50
+- Multiplier = 1.00
+- Subtotal = 562.50
+- Tax = 562.50 x 0.07 = 39.38
+- Total = 601.88
+- Estimated Days = Ceiling(7.5 / 8) = 1
+
+Actual Results:
+- Program accepted zero material cost
+- Program displayed Subtotal 562.50, Tax 39.38, Total 601.88
+- Program displayed Estimated Days as 1

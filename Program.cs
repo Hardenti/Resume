@@ -1,152 +1,164 @@
 ﻿namespace Assignemet_1_Tiyana_harden;
 
-// This program manages a simple personal expense tracker.
-// The user can add expenses, view the list, and see the total amount spent.
-public class Expense
+// Program purpose:
+// Create a freelance project estimate based on labor, materials, project type,
+// optional discount, and tax.
+
+public enum ProjectType
 {
-    public string Description { get; set; }
-    public string Category { get; set; }
-    public decimal Amount { get; set; }
-
-    // The Expense class stores details for a single expense item.
-    public Expense(string description, string category, decimal amount)
-    {
-        Description = description;
-        Category = category;
-        Amount = amount;
-    }
-
-    // Returns a formatted string describing the expense.
-    public string GetFormattedDescription()
-    {
-        return $"{Description} ({Category}): ${Amount:F2}";
-    }
+    Small,
+    Medium,
+    Large
 }
 
-public class Program
+public static class Program
 {
-    private static readonly List<Expense> expenses = new();
+    private const decimal LABOR_RATE = 75.00m;
+    private const decimal TAX_RATE = 0.07m;
 
     public static void Main()
     {
-        DisplayWelcomeMessage();
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("Freelance Project Estimator");
+        Console.WriteLine("---------------------------------");
 
+        // Gather required user input.
+        string clientName = ReadRequiredText("Client Name: ");
+        decimal laborHours = ReadDecimal("Labor Hours: ", allowZero: false);
+        decimal materialCost = ReadDecimal("Material Cost: ", allowZero: true);
+        ProjectType projectType = ReadProjectType("Project Type (Small, Medium, Large): ");
+        decimal? discountPercent = ReadNullableDecimal("Do you have a discount percentage? (Press Enter if none): ");
+
+        // Calculate estimate amounts.
+        decimal laborCost = laborHours * LABOR_RATE;
+        decimal multiplier = GetComplexityMultiplier(projectType);
+        decimal baseSubtotal = (laborCost + materialCost) * multiplier;
+
+        // Apply optional discount before tax.
+        decimal appliedDiscountPercent = discountPercent ?? 0m;
+        decimal discountAmount = baseSubtotal * (appliedDiscountPercent / 100m);
+        decimal subtotal = baseSubtotal - discountAmount;
+
+        decimal tax = subtotal * TAX_RATE;
+        decimal totalCost = subtotal + tax;
+
+        decimal roundedTotal = Math.Round(totalCost, 2, MidpointRounding.AwayFromZero);
+        int estimatedDays = (int)Math.Ceiling(laborHours / 8m);
+        int projectNumber = new Random().Next(1000, 10000);
+
+        // Display formatted estimate report.
+        Console.WriteLine();
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine("PROJECT ESTIMATE");
+        Console.WriteLine("---------------------------------");
+        Console.WriteLine($"Project Number: {projectNumber}");
+        Console.WriteLine($"Client: {clientName}");
+        Console.WriteLine($"Project Type: {projectType}");
+        Console.WriteLine();
+        Console.WriteLine($"Labor Cost:      {laborCost,10:C2}");
+        Console.WriteLine($"Material Cost:   {materialCost,10:C2}");
+
+        if (discountPercent.HasValue)
+        {
+            Console.WriteLine($"Discount ({discountPercent.Value}%): {-discountAmount,10:C2}");
+        }
+        else
+        {
+            Console.WriteLine("Discount:       No discount applied");
+        }
+
+        Console.WriteLine($"Subtotal:        {subtotal,10:C2}");
+        Console.WriteLine($"Tax:             {tax,10:C2}");
+        Console.WriteLine();
+        Console.WriteLine($"TOTAL:           {roundedTotal,10:C2}");
+        Console.WriteLine();
+        Console.WriteLine($"Estimated Days:  {estimatedDays}");
+        Console.WriteLine("---------------------------------");
+    }
+
+    private static string ReadRequiredText(string prompt)
+    {
         while (true)
         {
-            DisplayMenu();
-            Console.Write("Choose an option: ");
-            string? choice = Console.ReadLine();
+            Console.Write(prompt);
+            string? value = Console.ReadLine();
 
-            switch (choice)
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                case "1":
-                    AddExpense();
-                    break;
-                case "2":
-                    ViewExpenses();
-                    break;
-                case "3":
-                    ViewTotalExpenses();
-                    break;
-                case "4":
-                    Console.WriteLine("Thank you for using the Personal Expense Tracker.");
-                    return;
-                default:
-                    Console.WriteLine("Invalid option. Please choose 1, 2, 3, or 4.");
-                    break;
-            }
-        }
-    }
-
-    // Displays the main title for the application.
-    private static void DisplayWelcomeMessage()
-    {
-        Console.WriteLine("Personal Expense Tracker");
-        Console.WriteLine();
-    }
-
-    // Displays the main menu options for the user.
-    private static void DisplayMenu()
-    {
-        Console.WriteLine("1 - Add Expense");
-        Console.WriteLine("2 - View Expenses");
-        Console.WriteLine("3 - View Total Expenses");
-        Console.WriteLine("4 - Exit");
-        Console.WriteLine();
-    }
-
-    // Adds a new Expense object to the collection after validating input.
-    private static void AddExpense()
-    {
-        Console.Write("Enter description: ");
-        string? description = Console.ReadLine();
-
-        while (string.IsNullOrWhiteSpace(description))
-        {
-            Console.WriteLine("Description cannot be empty.");
-            Console.Write("Enter description: ");
-            description = Console.ReadLine();
-        }
-
-        Console.Write("Enter category: ");
-        string? category = Console.ReadLine();
-
-        while (string.IsNullOrWhiteSpace(category))
-        {
-            Console.WriteLine("Category cannot be empty.");
-            Console.Write("Enter category: ");
-            category = Console.ReadLine();
-        }
-
-        decimal amount;
-        bool validAmount = false;
-
-        while (!validAmount)
-        {
-            Console.Write("Enter amount: ");
-            string? amountInput = Console.ReadLine();
-
-            if (decimal.TryParse(amountInput, out amount) && amount > 0)
-            {
-                validAmount = true;
-                Expense expense = new(description.Trim(), category.Trim(), amount);
-                expenses.Add(expense);
-                Console.WriteLine($"Expense added: {expense.GetFormattedDescription()}");
-                Console.WriteLine();
-                return;
+                return value.Trim();
             }
 
-            Console.WriteLine("Invalid amount. Please enter a valid number greater than 0.");
+            Console.WriteLine("Value cannot be blank.");
         }
     }
 
-    // Displays all expenses currently stored in the list.
-    private static void ViewExpenses()
+    private static decimal ReadDecimal(string prompt, bool allowZero)
     {
-        Console.WriteLine();
-
-        if (expenses.Count == 0)
+        while (true)
         {
-            Console.WriteLine("No expenses recorded yet.");
-            Console.WriteLine();
-            return;
-        }
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
 
-        Console.WriteLine("Expenses:");
-        foreach (Expense expense in expenses)
-        {
-            Console.WriteLine(expense.GetFormattedDescription());
-        }
+            if (decimal.TryParse(input, out decimal result))
+            {
+                if (result > 0 || (allowZero && result == 0))
+                {
+                    return result;
+                }
+            }
 
-        Console.WriteLine();
+            Console.WriteLine(allowZero
+                ? "Enter a valid number that is zero or greater."
+                : "Enter a valid number greater than zero.");
+        }
     }
 
-    // Calculates and displays the total of all recorded expenses.
-    private static void ViewTotalExpenses()
+    private static decimal? ReadNullableDecimal(string prompt)
     {
-        decimal total = expenses.Sum(expense => expense.Amount);
-        Console.WriteLine($"Total Expenses: ${total:F2}");
-        Console.WriteLine();
+        while (true)
+        {
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return null;
+            }
+
+            if (decimal.TryParse(input, out decimal discount) && discount >= 0m && discount <= 100m)
+            {
+                return discount;
+            }
+
+            Console.WriteLine("Enter a valid discount between 0 and 100, or press Enter for none.");
+        }
+    }
+
+    private static ProjectType ReadProjectType(string prompt)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string? input = Console.ReadLine();
+
+            if (Enum.TryParse(input, true, out ProjectType type))
+            {
+                return type;
+            }
+
+            Console.WriteLine("Invalid project type. Enter Small, Medium, or Large.");
+        }
+    }
+
+    private static decimal GetComplexityMultiplier(ProjectType projectType)
+    {
+        return projectType switch
+        {
+            ProjectType.Small => 1.0m,
+            ProjectType.Medium => 1.15m,
+            ProjectType.Large => 1.30m,
+            _ => 1.0m
+        };
     }
 }
 

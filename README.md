@@ -1,77 +1,45 @@
-# ProjectOps Hub
+# Tiyana Harden Resume
 
-This repository contains a multi-page project-management website built for operational tracking.
+This repository contains a personal resume webpage for Tiyana Harden, an Operations Manager focused on IT service delivery, continuous improvement, and operational performance.
 
-## Project Description
+## Overview
 
-ProjectOps Hub helps project managers:
+The site presents a polished, professional resume layout with sections for:
 
-- Track client-assessed tools
-- Compare SLA targets versus actual performance
-- Compare KPI targets versus actual performance
-- Identify internal delivery risk (low, medium, high)
-- Maintain a single internal tracking board for governance reviews
+- Executive summary
+- Technology and methods
+- Core competencies
+- Selected operational impact
+- Professional experience
+- Education and recognition
 
-Website pages:
+## Files
 
-- Home: live operational snapshot
-- About: operating model and workflow
-- Resume: capability framework and governance cadence
-- Projects: solution modules plus interactive tracker
-- Contact: support and governance channels
+- resume.html — resume page content
+- styles.css — styling and responsive layout
+- script.js — shared site scripts
+- index.html — homepage
+- about.html — about page
+- projects.html — project page
+- contact.html — contact page
 
-Tracker capabilities:
+## How to view locally
 
-- Add client records with assessment score and review date
-- Automatic SLA/KPI met or missed status
-- Risk classification logic based on gaps and score
-- Local persistence using browser local storage
-
-## Technologies Used
-
-- HTML5
-- CSS3
-- JavaScript (vanilla)
-- Browser Local Storage API
-- Git and GitHub
-- GitHub Pages
-
-## File Structure
-
-- index.html
-- about.html
-- resume.html
-- projects.html
-- contact.html
-- styles.css
-- script.js
-- assets/images/
-
-## How To Update The Site
-
-1. Open the project in VS Code.
-2. Edit content in the HTML pages as needed.
-3. Update tracker logic in script.js for SLA/KPI rules if your process changes.
-4. Update styles in styles.css for layout or branding updates.
-5. Test responsive behavior and tracker workflows in browser.
-6. Commit and push your changes:
+1. Open the project folder in VS Code.
+2. Open resume.html in a browser, or run a local preview server from the project root.
+3. For a simple local server, run:
 
 ```bash
-git add .
-git commit -m "Update portfolio content"
-git push
+python -m http.server 8000
 ```
 
-GitHub Pages redeploys automatically after push.
+Then open http://localhost:8000/resume.html in your browser.
 
-## GitHub Pages Deployment Steps
+## Notes
 
-1. Push this repository to GitHub.
-2. Open repository Settings.
-3. Go to Pages.
-4. Under Build and deployment:
-   - Source: Deploy from a branch
-   - Branch: main
-   - Folder: / (root)
-5. Save settings.
-6. Wait for deployment to finish.
+This project is designed as a professional resume and portfolio website, with a clean, readable layout and mobile-friendly styling.
+
+## Repository purpose
+
+This project showcases Tiyana Harden's experience in operations management, KPI improvement, service desk leadership, workforce planning, and customer-focused service delivery.
+

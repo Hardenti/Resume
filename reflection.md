@@ -1,19 +1,22 @@
 # Reflection
 
-1. What is the difference between a class and an object?
-   A class is a blueprint that defines the structure and behavior of a type. An object is an instance of that class created in memory with actual values.
+1. What is the difference between a variable and a constant?
+   A variable can change while the program is running, but a constant stays the same. In my program, labor rate and tax rate are constants because those values should not change.
 
-2. What is instantiation?
-   Instantiation is the process of creating an object from a class using the `new` keyword and a constructor.
+2. Why was decimal used for money values?
+   I used decimal because it is more accurate for currency calculations than float or double. It avoids small rounding errors that can happen with floating-point data types.
 
-3. Which properties and methods did your Expense class contain?
-   The `Expense` class contained the properties `Description`, `Category`, and `Amount`. It also contained the method `GetFormattedDescription()`, which returned a string in the format `Description (Category): $Amount`.
+3. What is the purpose of an enum?
+   An enum groups related named options into one type. I used the ProjectType enum to safely represent Small, Medium, and Large project choices.
 
-4. Describe one syntax error you encountered.
-   One syntax error I encountered was forgetting to close a brace or using the wrong type in a method call, which caused the compiler to report a syntax error until the code was corrected.
+4. Give an example of a nullable value in your program.
+   The discount percentage is nullable. If the user presses Enter, the value is null and no discount is applied.
 
-5. Describe one runtime error or bug you encountered.
-   One bug I encountered was accepting invalid numeric input, such as a word like `abc`, which caused the program to either fail or loop incorrectly until I added validation with `decimal.TryParse()`.
+5. What is the difference between implicit and explicit casting?
+   Implicit casting happens automatically when conversion is safe. Explicit casting is when I manually convert a value, like casting the result of Math.Ceiling to an int for estimated days.
 
-6. How did testing help you find problems in your code?
-   Testing helped by showing exactly where the program did not behave as expected. It allowed me to confirm that invalid input was handled correctly and that the total amount updated correctly after adding expenses.
+6. Describe one place where you used the Math class.
+   I used Math.Round to round the final total to two decimal places and Math.Ceiling to estimate whole work days based on labor hours.
+
+7. Why is variable scope important?
+   Variable scope controls where a variable can be used. Good scope keeps code easier to read, prevents accidental changes, and helps avoid naming conflicts.
